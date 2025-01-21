@@ -51,8 +51,8 @@ document.getElementById('download').addEventListener('click', async (event) => {
     // download the video
     event.preventDefault();
 
-    document.querySelector('button').disabled = true;
-    document.getElementById('download').innerText = 'Processing...';
+    let downloadbtn = document.getElementById('download').setAttribute('disabled', 'true');
+
     console.log('Download button clicked'); 
     if (vidUrl instanceof HTMLInputElement && startInput instanceof HTMLInputElement && endInput instanceof HTMLInputElement) {
         const videoUrl = vidUrl.value;
@@ -61,6 +61,12 @@ document.getElementById('download').addEventListener('click', async (event) => {
 
         if (!validateInput(videoUrl, startTime, endTime))
             return; // failed to validate
+
+        let isLoading = true;
+
+        if (isLoading) {
+            document.querySelector('body').setAttribute('class', 'blur');
+        }
 
         // send data to backend
         fetch("http://localhost:5000/process-video", {
@@ -80,6 +86,12 @@ document.getElementById('download').addEventListener('click', async (event) => {
             })
             .catch(error => {
                 console.error("Error: ", error)
+            })
+            .finally(() => {
+                if (isLoading) {
+                    document.querySelector('body').setAttribute('class', '');
+                    isLoading = false;
+                }
             });
     }
 });

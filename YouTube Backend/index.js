@@ -18,6 +18,7 @@ app.listen(5000, () => {
 const ytDlpPath = path.join(__dirname, 'yt-dlp.exe');
 
 app.post("/process-video", async (req, res) => {
+
     console.log("Received request: ", req.body);
     try {
         const { videoUrl, startTime, endTime } = req.body;
@@ -51,7 +52,7 @@ app.post("/process-video", async (req, res) => {
                 .audioBitrate(128)
                 .on('end', () => {
                     console.log('Processing finished!');
-                    res.download(outputPath, (err) => {
+                    res.download(processedOutputPath, (err) => {
                         if (!err) {
                             fs.unlinkSync(outputPath);
                             fs.unlinkSync(processedOutputPath);
