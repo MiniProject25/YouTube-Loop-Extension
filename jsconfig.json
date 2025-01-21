@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES6", "DOM"],
+        "checkJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "chrome": [
+                "node_modules/@types/chrome"
+            ]
+        },
+        "moduleResolution": "node",
+    },
+    "include": [
+        "**/*"
+    ]
+}

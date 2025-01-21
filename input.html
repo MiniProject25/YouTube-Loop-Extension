@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Loop Video</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+            font-size: large;
+        }
+
+        input {
+            margin: 1px;
+            font-size: large;
+        }
+
+        button {
+            margin-top: 10px;
+            font-size: large;
+            border-radius: 10px;
+            border: none;
+            padding: 5px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Set Loop Range</h3>
+    <form action="" method="post">
+        <label>Video URL: <input type="text" id="video-url"></label><br>
+        <label>Start Time (hh:mm:ss): <input type="text" id="start-time" ></label><br>
+        <label>End Time (hh:mm:ss): <input type="text" id="end-time" ></label><br>
+        <button type="submit" id="confirm">Confirm</button>
+        <button name="dwnd" id="download">Download</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
